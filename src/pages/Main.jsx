@@ -126,8 +126,6 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
         BestAO12={BestAO12}
         BestAO100={BestAO100}
       />
-
-      {/* <div className="timer-underline"> */}
       <ScrambleVisualization scramble={scramble} />
       <CurrentStats
         solvesCount={solvesCount}
@@ -137,7 +135,6 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
         AO100={currAO100}
       />
       <LastSolves solves={solves} formatTime={formatTime} />
-      {/* </div> */}
     </>
   );
 };
