@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-speedcubing-timer/static/css/main.e88701cb.css",
-    "main.js": "/react-speedcubing-timer/static/js/main.6d34500b.js",
+    "main.css": "/react-speedcubing-timer/static/css/main.dd0d241f.css",
+    "main.js": "/react-speedcubing-timer/static/js/main.4d2382a9.js",
     "static/js/938.78f59987.chunk.js": "/react-speedcubing-timer/static/js/938.78f59987.chunk.js",
     "static/js/209.1b551f7f.chunk.js": "/react-speedcubing-timer/static/js/209.1b551f7f.chunk.js",
     "static/js/32.5f445a7e.chunk.js": "/react-speedcubing-timer/static/js/32.5f445a7e.chunk.js",
@@ -10,8 +10,8 @@
     "static/js/135.849016dc.chunk.js": "/react-speedcubing-timer/static/js/135.849016dc.chunk.js",
     "static/js/909.4d15ee4d.chunk.js": "/react-speedcubing-timer/static/js/909.4d15ee4d.chunk.js",
     "index.html": "/react-speedcubing-timer/index.html",
-    "main.e88701cb.css.map": "/react-speedcubing-timer/static/css/main.e88701cb.css.map",
-    "main.6d34500b.js.map": "/react-speedcubing-timer/static/js/main.6d34500b.js.map",
+    "main.dd0d241f.css.map": "/react-speedcubing-timer/static/css/main.dd0d241f.css.map",
+    "main.4d2382a9.js.map": "/react-speedcubing-timer/static/js/main.4d2382a9.js.map",
     "938.78f59987.chunk.js.map": "/react-speedcubing-timer/static/js/938.78f59987.chunk.js.map",
     "209.1b551f7f.chunk.js.map": "/react-speedcubing-timer/static/js/209.1b551f7f.chunk.js.map",
     "32.5f445a7e.chunk.js.map": "/react-speedcubing-timer/static/js/32.5f445a7e.chunk.js.map",
@@ -21,7 +21,7 @@
     "909.4d15ee4d.chunk.js.map": "/react-speedcubing-timer/static/js/909.4d15ee4d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e88701cb.css",
-    "static/js/main.6d34500b.js"
+    "static/css/main.dd0d241f.css",
+    "static/js/main.4d2382a9.js"
   ]
 }
