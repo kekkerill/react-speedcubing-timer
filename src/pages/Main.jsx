@@ -111,6 +111,13 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
 
   return (
     <>
+      <TimerBlock
+        solves={solves}
+        setSolves={setSolves}
+        scramble={scramble}
+        onGenerateScramble={generateScramble}
+        formatTime={formatTime}
+      />
       <MainStats
         solvesCount={solvesCount}
         bestTime={bestTime}
@@ -119,24 +126,18 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
         BestAO12={BestAO12}
         BestAO100={BestAO100}
       />
-      <TimerBlock
-        solves={solves}
-        setSolves={setSolves}
-        scramble={scramble}
-        onGenerateScramble={generateScramble}
-        formatTime={formatTime}
+
+      {/* <div className="timer-underline"> */}
+      <ScrambleVisualization scramble={scramble} />
+      <CurrentStats
+        solvesCount={solvesCount}
+        MO3={currMO3}
+        AO5={currAO5}
+        AO12={currAO12}
+        AO100={currAO100}
       />
       <LastSolves solves={solves} formatTime={formatTime} />
-      <div className="timer-underline">
-        <CurrentStats
-          solvesCount={solvesCount}
-          MO3={currMO3}
-          AO5={currAO5}
-          AO12={currAO12}
-          AO100={currAO100}
-        />
-        <ScrambleVisualization scramble={scramble} />
-      </div>
+      {/* </div> */}
     </>
   );
 };
