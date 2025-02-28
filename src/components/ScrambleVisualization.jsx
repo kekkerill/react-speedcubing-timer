@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ScrambleDisplay } from "scramble-display"; // Импортируем ScrambleDisplay из библиотеки
-import { AppContext } from "../App";
 
-const ScrambleVisualization = () => {
-  const scramble = useContext(AppContext).scramble;
+const ScrambleVisualization = ({
+  scramble,
+  event = "333",
+  visualization = "2D",
+  checkered = false,
+}) => {
   const containerRef = useRef(null);
   const scrambleDisplayRef = useRef(null);
-  const checkered = false;
-  const visualization = "2D";
-  const event = "333";
+
   useEffect(() => {
     scrambleDisplayRef.current = new ScrambleDisplay();
 

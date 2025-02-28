@@ -2,9 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./app.scss";
 import Main from "./pages/Main";
 import Solves from "./pages/Solves";
-import { createContext, useEffect, useState } from "react";
-
-export const AppContext = createContext({});
+import { useEffect, useState } from "react";
 
 function App() {
   const [scramble, setScramble] = useState("");
@@ -42,38 +40,34 @@ function App() {
   }, [scramble]);
 
   return (
-    <AppContext.Provider
-      value={{ scramble, setScramble, solves, setSolves, formatTime }}
-    >
-      <div className="app">
-        <div className="wrapper">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  scramble={scramble}
-                  setScramble={setScramble}
-                  formatTime={formatTime}
-                  solves={solves}
-                  setSolves={setSolves}
-                />
-              }
-            />
-            <Route
-              path="/solves"
-              element={
-                <Solves
-                  solves={solves}
-                  setSolves={setSolves}
-                  formatTime={formatTime}
-                />
-              }
-            />
-          </Routes>
-        </div>
+    <div className="app">
+      <div className="wrapper">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                scramble={scramble}
+                setScramble={setScramble}
+                formatTime={formatTime}
+                solves={solves}
+                setSolves={setSolves}
+              />
+            }
+          />
+          <Route
+            path="/solves"
+            element={
+              <Solves
+                solves={solves}
+                setSolves={setSolves}
+                formatTime={formatTime}
+              />
+            }
+          />
+        </Routes>
       </div>
-    </AppContext.Provider>
+    </div>
   );
 }
 

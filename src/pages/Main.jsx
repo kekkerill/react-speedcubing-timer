@@ -1,13 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import MainStats from "../components/MainStats";
 import TimerBlock from "../components/TimerBlock";
 import LastSolves from "../components/LastSolves";
 import CurrentStats from "../components/CurrentStats";
 import ScrambleVisualization from "../components/ScrambleVisualization";
 import { Scrambow } from "scrambow";
-import { AppContext } from "../App";
 
-const Main = ({ setScramble, solves }) => {
+const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
   function currMO(solves, amount) {
     if (solves.length < amount) {
       return null;
@@ -89,7 +88,7 @@ const Main = ({ setScramble, solves }) => {
     }
     return worstTime;
   }
-  const formatTime = useContext(AppContext).formatTime;
+
   const generateScramble = () => {
     setScramble(new Scrambow().get()[0].scramble_string);
   };
@@ -112,7 +111,13 @@ const Main = ({ setScramble, solves }) => {
 
   return (
     <>
-      <TimerBlock onGenerateScramble={generateScramble} />
+      <TimerBlock
+        solves={solves}
+        setSolves={setSolves}
+        scramble={scramble}
+        onGenerateScramble={generateScramble}
+        formatTime={formatTime}
+      />
       <MainStats
         solvesCount={solvesCount}
         bestTime={bestTime}
@@ -121,7 +126,7 @@ const Main = ({ setScramble, solves }) => {
         bestAO12={bestAO12}
         bestAO100={bestAO100}
       />
-      <ScrambleVisualization />
+      <ScrambleVisualization scramble={scramble} />
       <CurrentStats
         solvesCount={solvesCount}
         MO3={currMO3}
