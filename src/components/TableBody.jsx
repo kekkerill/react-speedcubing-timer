@@ -12,7 +12,7 @@ const TableBody = ({ formatTime, solves }) => {
                 `DNF (${formatTime(solve.time)})`
               ) : (
                 <>
-                  {formatTime(solve.time)} {solve.isPlusTwo ? "+2" : ""}
+                  {formatTime(solve.time)} {solve.isPlusTwo ? "(+2)" : ""}
                 </>
               )}
             </li>

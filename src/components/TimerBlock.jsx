@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { AppContext } from "../App";
 const TwoSecPenalty = 2000;
 const TimerShift = 10;
-const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
+const TimerBlock = ({ onGenerateScramble }) => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isKeyDown, setIsKeyDown] = useState(false);
@@ -10,7 +11,8 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   const [finalTime, setFinalTime] = useState(null);
   const startTimeRef = useRef(0);
   const prevIsRunningRef = useRef();
-
+  const scramble = useContext(AppContext).scramble;
+  const formatTime = useContext(AppContext).formatTime;
   useEffect(() => {
     let timer;
     if (isRunning) {
@@ -183,7 +185,7 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
           onClick={handleDNF}
           disabled={isRunning}
         >
-          DNF ;
+          DNF
         </button>
       </div>
     </div>
