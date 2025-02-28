@@ -5,7 +5,7 @@ const TableBody = ({ formatTime, solves }) => {
         <div className="no-solves">No solves yet</div>
       ) : (
         solves.reverse().map((solve) => (
-          <ul key={solve.id} className="table-item">
+          <ul className="table-item">
             <li>{solve.id}</li>
             <li>
               {solve.isDNF ? (

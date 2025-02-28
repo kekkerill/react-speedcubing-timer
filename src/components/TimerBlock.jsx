@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-
+const TwoSecPenalty = 2000;
+const TimerShift = 10;
 const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -17,7 +18,7 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
       timer = setInterval(() => {
         const currentTime = Date.now() - startTimeRef.current;
         setTime(currentTime);
-      }, 10);
+      }, TimerShift);
     } else {
       clearInterval(timer);
     }
@@ -27,8 +28,8 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   useEffect(() => {
     if (prevIsRunningRef.current === true && !isRunning) {
       let finalTimeWithPenalties = time;
-      if (showPlusTwo) finalTimeWithPenalties += 2000;
-      if (showDNF) finalTimeWithPenalties = "DNF";
+      if (showPlusTwo) finalTimeWithPenalties += TwoSecPenalty;
+      if (showDNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
 
       setFinalTime(finalTimeWithPenalties);
       saveToLocalStorage(
@@ -51,8 +52,8 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   useEffect(() => {
     if (!isRunning && finalTime !== null) {
       let finalTimeWithPenalties = time;
-      if (showPlusTwo) finalTimeWithPenalties += 2000;
-      if (showDNF) finalTimeWithPenalties = "DNF";
+      if (showPlusTwo) finalTimeWithPenalties += TwoSecPenalty;
+      if (showDNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
       setFinalTime(finalTimeWithPenalties);
       updateSolveInLocalStorage(showPlusTwo, showDNF);
     }
@@ -81,7 +82,7 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
       lastSolve.isDNF = isDNF;
 
       if (isDNF) {
-        lastSolve.time = "DNF";
+        lastSolve.time = "DNF"; // Do Not Finished;;
       } else if (isPlusTwo) {
         if (typeof lastSolve.time === "number") {
           lastSolve.time += 1000;
@@ -182,7 +183,7 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
           onClick={handleDNF}
           disabled={isRunning}
         >
-          DNF
+          DNF ;
         </button>
       </div>
     </div>

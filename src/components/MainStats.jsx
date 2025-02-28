@@ -4,17 +4,17 @@ const MainStats = ({
   solvesCount,
   bestTime,
   worstTime,
-  BestAO5,
-  BestAO12,
-  BestAO100,
+  bestAO5,
+  bestAO12,
+  bestAO100,
 }) => {
   const mainStatsObj = {
     "Solves count": solvesCount ? solvesCount : "No solves yet",
     "Best time": solvesCount > 1 ? bestTime : "—",
     "Worst time": solvesCount > 1 ? worstTime : "—",
-    "Best AO5": solvesCount >= 5 ? BestAO5 : "—",
-    "Best AO12": solvesCount >= 12 ? BestAO12 : "—",
-    "Best AO100": solvesCount >= 100 ? BestAO100 : "—",
+    "Best AO5": solvesCount >= 5 ? bestAO5 : "—",
+    "Best AO12": solvesCount >= 12 ? bestAO12 : "—",
+    "Best AO100": solvesCount >= 100 ? bestAO100 : "—",
   };
 
   return (

@@ -101,9 +101,9 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
   const solvesCount = solves.length;
   const bestTime = formatTime(findBestTime(solves));
   const worstTime = formatTime(findWorstTime(solves));
-  const BestAO5 = formatTime(bestAO(solves, 5));
-  const BestAO12 = formatTime(bestAO(solves, 12));
-  const BestAO100 = formatTime(bestAO(solves, 100));
+  const bestAO5 = formatTime(bestAO(solves, 5));
+  const bestAO12 = formatTime(bestAO(solves, 12));
+  const bestAO100 = formatTime(bestAO(solves, 100));
   const currMO3 = formatTime(currMO(solves, 3));
   const currAO5 = formatTime(currAO(solves, 5));
   const currAO12 = formatTime(currAO(solves, 12));
@@ -122,9 +122,9 @@ const Main = ({ formatTime, scramble, setScramble, setSolves, solves }) => {
         solvesCount={solvesCount}
         bestTime={bestTime}
         worstTime={worstTime}
-        BestAO5={BestAO5}
-        BestAO12={BestAO12}
-        BestAO100={BestAO100}
+        bestAO5={bestAO5}
+        bestAO12={bestAO12}
+        bestAO100={bestAO100}
       />
       <ScrambleVisualization scramble={scramble} />
       <CurrentStats
