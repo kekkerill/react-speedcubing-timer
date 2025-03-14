@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { ScrambleDisplay } from "scramble-display"; // Импортируем ScrambleDisplay из библиотеки
-
+import styles from "./ScrambleVisualization.module.scss";
 const ScrambleVisualization = ({
   scramble,
   event = "333",
@@ -41,7 +41,7 @@ const ScrambleVisualization = ({
   }, [scramble, event, visualization, checkered]);
 
   return (
-    <div className="scramble-visualization">
+    <div className={styles.scramble_visualization}>
       <div ref={containerRef}></div>
     </div>
   );

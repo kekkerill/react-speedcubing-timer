@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import TableBody from "../components/TableBody";
 
 const Solves = ({ formatTime, setSolves, solves }) => {
-  const thList = ["№", "Time", "Date", "Scramble"];
+  const thList = ["№", "Time", "Date", "Scramble", " "];
   return (
     <div className="solves">
       <Header setSolves={setSolves} />
@@ -11,7 +11,11 @@ const Solves = ({ formatTime, setSolves, solves }) => {
           <li key={i}>{thObj}</li>
         ))}
       </ul>
-      <TableBody formatTime={formatTime} solves={solves} />
+      <TableBody
+        formatTime={formatTime}
+        solves={solves}
+        setSolves={setSolves}
+      />
     </div>
   );
 };

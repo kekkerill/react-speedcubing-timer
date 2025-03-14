@@ -1,0 +1,54 @@
+.main_stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  height: 410px;
+  width: 25%;
+  background: #090420;
+  border-radius: 36px;
+  margin-bottom: 15px;
+  @media (max-width: 1696px) {
+    width: 70%;
+  }
+  .logo_block {
+    margin-bottom: 20px;
+    .logo {
+      color: #aadaff;
+      font-size: 40px;
+      &_underline {
+        color: #aadaff;
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+  .stats_title {
+    color: #aadaff;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  ul {
+    width: 90%;
+    list-style: none;
+    padding: 0;
+    li {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: -5px;
+      p {
+        color: #aadaff;
+      }
+      .dashed_underline {
+        flex: 1;
+        border-bottom: 1px dotted white;
+      }
+      .best {
+        color: #40cb54;
+      }
+      .worst {
+        color: #f04242;
+      }
+    }
+  }
+}

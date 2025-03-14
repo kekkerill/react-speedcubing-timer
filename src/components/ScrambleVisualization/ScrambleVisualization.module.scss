@@ -1,0 +1,14 @@
+.scramble_visualization {
+  margin-bottom: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 310px;
+  background: #090420;
+  border-radius: 36px;
+  @media (max-width: 1696px) {
+    width: 70%;
+  }
+}

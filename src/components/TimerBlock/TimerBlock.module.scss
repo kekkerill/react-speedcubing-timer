@@ -1,0 +1,78 @@
+.timer_block {
+  margin-bottom: 15px;
+  width: 70%;
+  min-width: 90px;
+  height: 410px;
+  background: #090420;
+  border-radius: 36px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  @media (max-width: 1696px) {
+    width: 70%;
+  }
+  .scramble_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .scramble {
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+      @media (max-width: 560px) {
+        width: 50%;
+      }
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      background: 0;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+  .start_hint {
+    font-family: "Righteous";
+    font-size: 20px;
+  }
+  .timer {
+    font-family: "Kode Mono";
+
+    font-size: 96px;
+    &__green {
+      color: #40cb54;
+      font-family: "Kode Mono";
+      font-size: 96px;
+    }
+  }
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    .action_btn {
+      background: #17153a;
+      border: 0;
+      width: 86px;
+      height: 54px;
+      border-radius: 25px;
+      font-family: "Righteous";
+      font-size: 20px;
+      &__active {
+        @extend .action-btn !optional;
+        color: #aadaff;
+      }
+      &:hover {
+        border: 1px solid #aadaff;
+      }
+      &:active {
+        border: 2px solid #aadaff;
+      }
+    }
+  }
+}

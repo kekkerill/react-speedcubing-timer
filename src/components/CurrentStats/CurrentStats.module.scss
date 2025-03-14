@@ -1,0 +1,30 @@
+.current_stats {
+  margin-bottom: 15px;
+  width: 300px;
+  height: 310px;
+  background: #090420;
+  border-radius: 36px;
+  padding: 20px;
+  @media (max-width: 1696px) {
+    width: 70%;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    li {
+      display: flex;
+
+      p {
+        color: #aadaff;
+        font-size: 20px;
+      }
+      .dashed_underline {
+        flex: 1;
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+}

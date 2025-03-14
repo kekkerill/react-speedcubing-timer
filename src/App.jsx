@@ -2,16 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import "./app.scss";
 import Main from "./pages/Main";
 import Solves from "./pages/Solves";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function App() {
   const [scramble, setScramble] = useState("");
   const [solves, setSolves] = useState([]);
 
-  const formatTime = (ms) => {
-    if (ms === "DNF") {
-      return "DNF";
-    }
+  const formatTime = useCallback((ms) => {
+    if (ms === "DNF") return "DNF";
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);
     const milliseconds = Math.floor((ms % 1000) / 10);
@@ -22,7 +20,7 @@ function App() {
       : `${seconds.toString().padStart(2, "0")}:${milliseconds
           .toString()
           .padStart(2, "0")}`;
-  };
+  }, []);
 
   useEffect(() => {
     const loadSolves = () => {
@@ -38,7 +36,7 @@ function App() {
     };
     loadSolves();
   }, [scramble]);
-
+  //TODO: StateManager
   return (
     <div className="app">
       <div className="wrapper">

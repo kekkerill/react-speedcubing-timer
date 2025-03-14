@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./MainStats.module.scss";
 const MainStats = ({
   solvesCount,
   bestTime,
@@ -18,23 +18,23 @@ const MainStats = ({
   };
 
   return (
-    <div className="main-stats">
-      <div className="logo-block">
-        <div className="logo">R.S.C.T.</div>
-        <div className="logo-underline">React Speed Cube Timer</div>
+    <div className={styles.main_stats}>
+      <div className={styles.logo_block}>
+        <div className={styles.logo}>R.S.C.T.</div>
+        <div className={styles.logo_underline}>React Speed Cube Timer</div>
       </div>
-      <div className="stats-title">Main stats</div>
+      <div className={styles.stats_title}>Main stats</div>
       <ul>
         {Object.keys(mainStatsObj).map((statKey) => (
           <li key={statKey}>
             <p>{statKey}</p>
-            <p className="dashed-underline"></p>
+            <p className={styles.dashed_underline}></p>
             <p
               className={
                 statKey.includes("Best")
-                  ? "best"
+                  ? styles.best
                   : statKey.includes("Worst")
-                  ? "worst"
+                  ? styles.worst
                   : ""
               }
             >

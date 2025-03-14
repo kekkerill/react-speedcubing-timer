@@ -1,0 +1,45 @@
+.header {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .to_main {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #090420;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo_block {
+    padding: 12px 58px;
+    background-color: #090420;
+    border-radius: 36px;
+    .logo {
+      color: #aadaff;
+      font-size: 40px;
+      &_underline {
+        color: #aadaff;
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+  .clear_session {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 70px;
+    border-radius: 36px;
+    background: #090420;
+    color: #aadaff;
+    font-family: "Lunasima";
+    font-size: 24px;
+  }
+}
