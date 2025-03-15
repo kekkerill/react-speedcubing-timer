@@ -1,13 +1,14 @@
 .header {
   margin-bottom: 20px;
   width: 100%;
-  height: 80px;
+  height: 6vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3vh;
   .to_main {
-    width: 70px;
-    height: 70px;
+    width: 5vh;
+    height: 5vh;
     border-radius: 50%;
     background: #090420;
     display: flex;
@@ -15,15 +16,15 @@
     justify-content: center;
   }
   .logo_block {
-    padding: 12px 58px;
+    padding: 1vh 3vw;
     background-color: #090420;
-    border-radius: 36px;
+    border-radius: 5rem;
     .logo {
       color: #aadaff;
-      font-size: 40px;
+      font-size: 3.5vh;
       &_underline {
         color: #aadaff;
-        font-size: 12px;
+        font-size: 1vh;
         text-align: center;
       }
     }
@@ -34,12 +35,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 70px;
-    border-radius: 36px;
+    width: 8vw;
+    height: 6vh;
+    border-radius: 5rem;
     background: #090420;
     color: #aadaff;
     font-family: "Lunasima";
-    font-size: 24px;
+    font-size: 2vh;
+    &:hover {
+      border: 0.1rem solid #aadaff;
+    }
   }
 }

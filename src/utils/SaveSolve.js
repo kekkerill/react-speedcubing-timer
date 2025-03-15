@@ -7,6 +7,7 @@ const saveToLocalStorage = (time, scramble, isPlusTwo, isDNF) => {
     date: new Date().toLocaleDateString(),
     isPlusTwo: isPlusTwo,
     isDNF: isDNF,
+    originalTime: time,
   };
   solves.push(newSolve);
   localStorage.setItem("solves", JSON.stringify(solves));
@@ -19,17 +20,13 @@ const updateSolveInLocalStorage = (isPlusTwo, isDNF) => {
 
     lastSolve.isPlusTwo = isPlusTwo;
     lastSolve.isDNF = isDNF;
-
-    if (isDNF) {
-      lastSolve.time = "DNF"; // Do Not Finished;;
-    } else if (isPlusTwo) {
-      if (typeof lastSolve.time === "number") {
-        lastSolve.time += 1000;
-      } else {
-        console.error("lastSolve.time is not a number:", lastSolve.time);
-      }
+    if (lastSolve.isDNF) {
+      lastSolve.time = "DNF";
+    } else if (lastSolve.isPlusTwo) {
+      lastSolve.time += 1000;
+    } else {
+      lastSolve.time = lastSolve.originalTime;
     }
-
     localStorage.setItem("solves", JSON.stringify(solves));
   }
 };

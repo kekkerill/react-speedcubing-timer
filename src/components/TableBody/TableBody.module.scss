@@ -6,14 +6,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 36px;
+    font-size: 3;
     color: #aadaff;
     font-family: "Lunasima";
   }
   .table_item {
     margin: 0;
     margin-bottom: 10px;
-    height: 40px;
+    height: 3vh;
     padding: 0;
     width: 100%;
     display: flex;
@@ -21,15 +21,15 @@
     align-items: center;
     list-style: none;
     li {
-      border-radius: 36px;
+      border-radius: 3vh;
       background: #090420;
-      font-size: 14px;
+      font-size: 1.2vh;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 94%;
       margin: 0 1%;
-      height: 40px;
+      height: 3vh;
       &:nth-last-child(2) {
         width: 200%;
       }

@@ -17,10 +17,10 @@ const TableBody = ({ formatTime, solves, setSolves }) => {
             <li>{solve.id}</li>
             <li>
               {solve.isDNF ? (
-                `DNF (${formatTime(solve.time)})`
+                `DNF (${formatTime(solve.originalTime)})`
               ) : (
                 <>
-                  {formatTime(solve.time)} {solve.isPlusTwo ? "+2" : ""}
+                  {formatTime(solve.time)} {solve.isPlusTwo ? "(+2)" : ""}
                 </>
               )}
             </li>

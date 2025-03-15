@@ -11,8 +11,8 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isKeyDown, setIsKeyDown] = useState(false);
-  const [showPlusTwo, setShowPlusTwo] = useState(false);
-  const [showDNF, setShowDNF] = useState(false);
+  const [plusTwo, setPlusTwo] = useState(false);
+  const [DNF, setDNF] = useState(false);
   const [finalTime, setFinalTime] = useState(null);
   const startTimeRef = useRef(0);
   const prevIsRunningRef = useRef();
@@ -44,45 +44,42 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   useEffect(() => {
     if (prevIsRunningRef.current === true && !isRunning) {
       let finalTimeWithPenalties = time;
-      if (showPlusTwo) finalTimeWithPenalties += TWO_SEC;
-      if (showDNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
+      if (plusTwo) finalTimeWithPenalties += TWO_SEC;
+      if (DNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
 
       setFinalTime(finalTimeWithPenalties);
-      saveToLocalStorage(
-        finalTimeWithPenalties,
-        scramble,
-        showPlusTwo,
-        showDNF
-      );
+      saveToLocalStorage(finalTimeWithPenalties, scramble, plusTwo, DNF);
       onGenerateScramble();
     }
 
     if (prevIsRunningRef.current === false && isRunning) {
       setFinalTime(null);
-      setShowPlusTwo(false);
-      setShowDNF(false);
+      setPlusTwo(false);
+      setDNF(false);
     }
     prevIsRunningRef.current = isRunning;
-  }, [isRunning, onGenerateScramble, time, showPlusTwo, showDNF, scramble]);
+  }, [isRunning, onGenerateScramble, time, plusTwo, DNF, scramble]);
 
   useEffect(() => {
     if (!isRunning && finalTime !== null) {
       let finalTimeWithPenalties = time;
-      if (showPlusTwo) finalTimeWithPenalties += TWO_SEC;
-      if (showDNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
+      if (plusTwo) finalTimeWithPenalties += TWO_SEC;
+      if (DNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
       setFinalTime(finalTimeWithPenalties);
-      updateSolveInLocalStorage(showPlusTwo, showDNF);
+      updateSolveInLocalStorage(plusTwo, DNF);
+      onGenerateScramble();
     }
-  }, [showPlusTwo, showDNF, isRunning, time, finalTime]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plusTwo, DNF, finalTime]);
 
   const handlePlusTwo = () => {
-    setShowPlusTwo((prev) => !prev);
-    if (!showPlusTwo) setShowDNF(false);
+    setPlusTwo((prev) => !prev);
+    if (!plusTwo) setDNF(false);
   };
 
   const handleDNF = () => {
-    setShowDNF((prev) => !prev);
-    if (!showDNF) setShowPlusTwo(false);
+    setDNF((prev) => !prev);
+    if (!DNF) setPlusTwo(false);
   };
 
   const handleKeyDown = (event) => {
@@ -100,7 +97,6 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
       setIsRunning((prev) => !prev);
     }
   };
-  //TODO: кнопки штрафов доделать
   return (
     <div className={styles.timer_block}>
       <div className={styles.scramble_block}>
@@ -116,24 +112,22 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
         {finalTime === "DNF"
           ? "DNF"
           : finalTime !== null
-          ? `${formatTime(finalTime)} ${showPlusTwo ? "(+2)" : ""}`
+          ? `${formatTime(finalTime)} ${plusTwo ? "(+2)" : ""}`
           : formatTime(time)}
       </div>
 
       <div className={styles.actions}>
         <button
-          className={
-            showPlusTwo ? styles.action_btn__active : styles.action_btn
-          }
+          className={plusTwo ? styles.action_btn__active : styles.action_btn}
           onClick={handlePlusTwo}
-          disabled={isRunning}
+          disabled={time === 0 || isRunning}
         >
           +2
         </button>
         <button
-          className={showDNF ? styles.action_btn__active : styles.action_btn}
+          className={DNF ? styles.action_btn__active : styles.action_btn}
           onClick={handleDNF}
-          disabled={isRunning}
+          disabled={time === 0 || isRunning}
         >
           DNF
         </button>

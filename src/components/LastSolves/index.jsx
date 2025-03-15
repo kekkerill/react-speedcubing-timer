@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./LastSolves.module.scss";
 import Arrowicon from "../icons/Arrowicon";
+
 const LastSolves = ({ solves, formatTime }) => {
   const lastSolves = solves
     .slice(-3)

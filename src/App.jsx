@@ -36,7 +36,7 @@ function App() {
     };
     loadSolves();
   }, [scramble]);
-  //TODO: StateManager
+  //TODO: Адаптивность, StateManager, хранилище для сборок, авторизация и личные кабинет
   return (
     <div className="app">
       <div className="wrapper">

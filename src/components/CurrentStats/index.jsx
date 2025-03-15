@@ -10,6 +10,7 @@ const CurrentStats = ({ solvesCount, MO3, AO5, AO12, AO100 }) => {
 
   return (
     <div className={styles.current_stats}>
+      <div className={styles.current_stats__title}>Current stats</div>
       <ul>
         {Object.entries(stats).map(([label, value]) => (
           <li key={label}>

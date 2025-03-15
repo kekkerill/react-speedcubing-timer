@@ -1,17 +1,20 @@
 .timer_block {
-  margin-bottom: 15px;
-  width: 70%;
+  margin-left: 3vw;
+  margin-bottom: 2vh;
+  width: 50vw;
   min-width: 90px;
-  height: 410px;
+  height: 45vh;
   background: #090420;
-  border-radius: 36px;
-  padding: 10px;
+  border-radius: 3rem;
+  padding: 20px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  @media (max-width: 1696px) {
+  @media (max-width: 1777px) {
     width: 70%;
+    margin-left: 0;
   }
   .scramble_block {
     display: flex;
@@ -20,7 +23,7 @@
     align-items: center;
     .scramble {
       width: 100%;
-      font-size: 20px;
+      font-size: 1.8vh;
       text-align: center;
       margin-bottom: 10px;
       @media (max-width: 560px) {
@@ -38,40 +41,51 @@
   }
   .start_hint {
     font-family: "Righteous";
-    font-size: 20px;
+    font-size: 1.8vh;
   }
   .timer {
     font-family: "Kode Mono";
 
-    font-size: 96px;
+    font-size: 12vh;
     &__green {
       color: #40cb54;
       font-family: "Kode Mono";
-      font-size: 96px;
+      font-size: 12vh;
     }
   }
   .actions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 300px;
+    width: 15vw;
+    height: auto;
+    min-width: 200px;
+    // min-height: 50px;
+
     .action_btn {
       background: #17153a;
       border: 0;
-      width: 86px;
-      height: 54px;
-      border-radius: 25px;
+      width: 5vw;
+      min-width: 70px;
+      height: 5vh;
+      border-radius: 5rem;
       font-family: "Righteous";
-      font-size: 20px;
+      font-size: 1.8vh;
       &__active {
-        @extend .action-btn !optional;
+        background: #17153a;
+        border: 0.3rem solid #aadaff;
+        width: 5vw;
+        height: 5vh;
+        border-radius: 5rem;
+        font-family: "Righteous";
+        font-size: 1.8vh;
         color: #aadaff;
       }
       &:hover {
-        border: 1px solid #aadaff;
+        border: 0.1rem solid #aadaff;
       }
-      &:active {
-        border: 2px solid #aadaff;
+      &:disabled {
+        opacity: 0.5;
       }
     }
   }
