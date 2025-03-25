@@ -12,5 +12,7 @@ A simple and efficient Rubik's Cube timer built with React and React Router. The
 🛠️ Tech Stack
 
     React + React Router
+    TypeScript
     LocalStorage for data persistence
+    Zustand for states
     SCSS for styling
