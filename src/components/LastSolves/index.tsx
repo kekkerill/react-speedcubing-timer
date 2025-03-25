@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./LastSolves.module.scss";
-import Arrowicon from "../icons/Arrowicon";
+import Arrowicon from "../icons/Arrowicon/index.tsx";
+import useSolveStore from "../store/store.ts";
 
-const LastSolves = ({ solves, formatTime }) => {
-  const lastSolves = solves
+const LastSolves = ({ formatTime }) => {
+  const lastSolves = useSolveStore((state) => state.solves)
     .slice(-3)
     .reverse()
     .map((solve) => ({

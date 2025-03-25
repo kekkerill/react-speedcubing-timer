@@ -1,4 +1,16 @@
-const Arrowicon = ({ color, width = "20px", height = "20px", rotate = 0 }) => {
+import React from "react";
+interface ArrowiconProps {
+  color?: string;
+  width?: string;
+  height?: string;
+  rotate?: number;
+}
+const Arrowicon: React.FC<ArrowiconProps> = ({
+  color,
+  width = "20px",
+  height = "20px",
+  rotate = 0,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

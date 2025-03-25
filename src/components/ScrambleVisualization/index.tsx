@@ -1,19 +1,20 @@
 import React, { useEffect, useRef } from "react";
-import { ScrambleDisplay } from "scramble-display"; // Импортируем ScrambleDisplay из библиотеки
+import { ScrambleDisplay } from "scramble-display";
 import styles from "./ScrambleVisualization.module.scss";
+type Visualization = "2D" | "3D";
 const ScrambleVisualization = ({
   scramble,
   event = "333",
-  visualization = "2D",
+  visualization = "2D" as Visualization,
   checkered = false,
 }) => {
-  const containerRef = useRef(null);
-  const scrambleDisplayRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const scrambleDisplayRef = useRef<ScrambleDisplay | null>(null);
 
   useEffect(() => {
     scrambleDisplayRef.current = new ScrambleDisplay();
 
-    scrambleDisplayRef.current.event = event;
+    scrambleDisplayRef.current.visualization = visualization as Visualization;
     scrambleDisplayRef.current.scramble = scramble;
     scrambleDisplayRef.current.visualization = visualization;
     scrambleDisplayRef.current.checkered = checkered;
@@ -31,7 +32,6 @@ const ScrambleVisualization = ({
   }, [checkered, event, scramble, visualization]);
 
   useEffect(() => {
-    // Обновляем свойства при изменении пропсов
     if (scrambleDisplayRef.current) {
       scrambleDisplayRef.current.event = event;
       scrambleDisplayRef.current.scramble = scramble;

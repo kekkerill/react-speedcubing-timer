@@ -1,12 +1,10 @@
-import Crossicon from "../icons/Crossicon";
+import React from "react";
+import Crossicon from "../icons/Crossicon/index.tsx";
+import useSolveStore from "../store/store.ts";
 import styles from "./TableBody.module.scss";
-const TableBody = ({ formatTime, solves, setSolves }) => {
-  const deleteSolve = (id) => {
-    const updatedSolves = solves.filter((solve) => solve.id !== id);
-    setSolves(updatedSolves);
-    console.log(updatedSolves);
-    localStorage.setItem("solves", JSON.stringify(updatedSolves));
-  };
+const TableBody = ({ formatTime }) => {
+  const solves = useSolveStore((state) => state.solves);
+  const deleteSolve = useSolveStore((state) => state.deleteSolve);
   return (
     <div className={styles.table_body}>
       {solves.length === 0 ? (

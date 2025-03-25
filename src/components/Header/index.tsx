@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import Arrowicon from "../icons/Arrowicon";
+import Arrowicon from "../icons/Arrowicon/index.tsx";
+import useSolveStore from "../store/store.ts";
+import React from "react";
 
-const Header = ({ setSolves }) => {
-  const handleClear = () => {
-    setSolves([]);
-    localStorage.removeItem("solves");
-  };
+const Header = () => {
+  const clearSolves = useSolveStore((state) => state.clearSolves);
 
   return (
     <div className={styles.header}>
@@ -19,7 +18,7 @@ const Header = ({ setSolves }) => {
         <div className={styles.logo}>R.S.C.T.</div>
         <div className={styles.logo_underline}>React Speed Cube Timer</div>
       </div>
-      <div onClick={handleClear} className={styles.clear_session}>
+      <div onClick={clearSolves} className={styles.clear_session}>
         Clear session
       </div>
     </div>

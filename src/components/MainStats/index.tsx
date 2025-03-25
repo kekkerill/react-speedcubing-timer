@@ -1,6 +1,14 @@
 import React from "react";
 import styles from "./MainStats.module.scss";
-const MainStats = ({
+interface MainStatsProps {
+  solvesCount: number;
+  bestTime: string;
+  worstTime: string;
+  bestAO5: string;
+  bestAO12: string;
+  bestAO100: string;
+}
+const MainStats: React.FC<MainStatsProps> = ({
   solvesCount,
   bestTime,
   worstTime,
@@ -9,7 +17,7 @@ const MainStats = ({
   bestAO100,
 }) => {
   const mainStatsObj = {
-    "Solves count": solvesCount ? solvesCount : "No solves yet",
+    "Solves count": solvesCount ? solvesCount : "0",
     "Best time": solvesCount > 1 ? bestTime : "—",
     "Worst time": solvesCount > 1 ? worstTime : "—",
     "Best AO5": solvesCount >= 5 ? bestAO5 : "—",

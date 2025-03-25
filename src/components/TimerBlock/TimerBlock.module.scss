@@ -46,11 +46,11 @@
   .timer {
     font-family: "Kode Mono";
 
-    font-size: 12vh;
+    font-size: 9vh;
     &__green {
       color: #40cb54;
       font-family: "Kode Mono";
-      font-size: 12vh;
+      font-size: 9vh;
     }
   }
   .actions {
@@ -60,7 +60,6 @@
     width: 15vw;
     height: auto;
     min-width: 200px;
-    // min-height: 50px;
 
     .action_btn {
       background: #17153a;

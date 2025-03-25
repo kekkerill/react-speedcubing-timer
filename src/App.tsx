@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import "./app.scss";
-import Main from "./pages/Main";
-import Solves from "./pages/Solves";
+import Main from "./pages/Main.tsx";
+import Solves from "./pages/Solves.tsx";
 import { useCallback, useEffect, useState } from "react";
+import useSolveStore from "./components/store/store.ts";
+import React from "react";
 
 function App() {
   const [scramble, setScramble] = useState("");
-  const [solves, setSolves] = useState([]);
-
-  const formatTime = useCallback((ms) => {
+  const loadSolves = useSolveStore((state) => state.loadSolves);
+  const formatTime = useCallback((ms: number | "DNF") => {
     if (ms === "DNF") return "DNF";
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);
@@ -23,20 +24,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const loadSolves = () => {
-      const storedSolves = localStorage.getItem("solves");
-      if (storedSolves) {
-        try {
-          const parsedSolves = JSON.parse(storedSolves);
-          setSolves(parsedSolves);
-        } catch (error) {
-          console.error("Ошибка при парсинге данных:", error);
-        }
-      }
-    };
     loadSolves();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scramble]);
-  //TODO: Адаптивность, StateManager, хранилище для сборок, авторизация и личные кабинет
+  //TODO: хранилище для сборок, авторизация и личные кабинет
   return (
     <div className="app">
       <div className="wrapper">
@@ -48,21 +39,10 @@ function App() {
                 scramble={scramble}
                 setScramble={setScramble}
                 formatTime={formatTime}
-                solves={solves}
-                setSolves={setSolves}
               />
             }
           />
-          <Route
-            path="/solves"
-            element={
-              <Solves
-                solves={solves}
-                setSolves={setSolves}
-                formatTime={formatTime}
-              />
-            }
-          />
+          <Route path="/solves" element={<Solves formatTime={formatTime} />} />
         </Routes>
       </div>
     </div>

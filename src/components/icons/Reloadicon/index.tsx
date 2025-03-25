@@ -1,3 +1,5 @@
+import React from "react";
+
 const Reloadicon = () => {
   return (
     <svg
@@ -7,9 +9,8 @@ const Reloadicon = () => {
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
-      xlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 489.645 489.645"
-      space="preserve"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g

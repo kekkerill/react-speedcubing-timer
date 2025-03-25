@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./TimerBlock.module.scss";
-import {
-  saveToLocalStorage,
-  updateSolveInLocalStorage,
-} from "../../utils/SaveSolve";
-import Reloadicon from "../icons/Reloadicon";
+import Reloadicon from "../icons/Reloadicon/index.tsx";
+import useSolveStore from "../store/store.ts";
 const TWO_SEC = 2000;
 const TIMER_SHIFT = 10;
 const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
@@ -13,10 +10,11 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
   const [isKeyDown, setIsKeyDown] = useState(false);
   const [plusTwo, setPlusTwo] = useState(false);
   const [DNF, setDNF] = useState(false);
-  const [finalTime, setFinalTime] = useState(null);
+  const [finalTime, setFinalTime] = useState<string | number | null>(null);
   const startTimeRef = useRef(0);
-  const prevIsRunningRef = useRef();
-
+  const prevIsRunningRef = useRef<boolean>(false);
+  const saveSolve = useSolveStore((state) => state.saveSolve);
+  const updateLastSolve = useSolveStore((state) => state.updateLastSolve);
   useEffect(() => {
     let timer;
     if (isRunning) {
@@ -43,12 +41,14 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
 
   useEffect(() => {
     if (prevIsRunningRef.current === true && !isRunning) {
-      let finalTimeWithPenalties = time;
+      let finalTimeWithPenalties: number | string = time;
       if (plusTwo) finalTimeWithPenalties += TWO_SEC;
-      if (DNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
+      if (DNF) finalTimeWithPenalties = NaN; // Do Not Finished;
 
       setFinalTime(finalTimeWithPenalties);
-      saveToLocalStorage(finalTimeWithPenalties, scramble, plusTwo, DNF);
+      if (typeof finalTimeWithPenalties === "number") {
+        saveSolve(finalTimeWithPenalties, scramble, plusTwo, DNF);
+      }
       onGenerateScramble();
     }
 
@@ -58,15 +58,16 @@ const TimerBlock = ({ scramble, onGenerateScramble, formatTime }) => {
       setDNF(false);
     }
     prevIsRunningRef.current = isRunning;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRunning, onGenerateScramble, time, plusTwo, DNF, scramble]);
 
   useEffect(() => {
     if (!isRunning && finalTime !== null) {
-      let finalTimeWithPenalties = time;
+      let finalTimeWithPenalties: number | string = time;
       if (plusTwo) finalTimeWithPenalties += TWO_SEC;
       if (DNF) finalTimeWithPenalties = "DNF"; // Do Not Finished;
       setFinalTime(finalTimeWithPenalties);
-      updateSolveInLocalStorage(plusTwo, DNF);
+      updateLastSolve(plusTwo, DNF);
       onGenerateScramble();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
